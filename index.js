@@ -18,28 +18,28 @@ function createShape() {
     case 'circle':
       shape.setAttribute('cx', Math.random() * (svg.clientWidth - 50) + 25);
       shape.setAttribute('cy', Math.random() * (svg.clientHeight - 50) + 25);
-      shape.setAttribute('r', Math.random() * 45 + 10);
+      shape.setAttribute('r', Math.random() * 385 + 10);
       break;
     case 'rect':
       shape.setAttribute('x', Math.random() * (svg.clientWidth - 50));
       shape.setAttribute('y', Math.random() * (svg.clientHeight - 50));
-      shape.setAttribute('width', Math.random() * 80 + 10);
-      shape.setAttribute('height', Math.random() * 80 + 10);
+      shape.setAttribute('width', Math.random() * 370 + 10);
+      shape.setAttribute('height', Math.random() * 380 + 10);
       break;
     case 'polygon':
       const x1 = Math.random() * (svg.clientWidth - 50);
       const y1 = Math.random() * (svg.clientHeight - 50);
-      const x2 = x1 + Math.random() * 80 + 10;
-      const y2 = y1 + Math.random() * 80 + 10;
-      const x3 = x1 + Math.random() * 80 + 10;
-      const y3 = y1 + Math.random() * 80 + 10;
+      const x2 = x1 + Math.random() * 380 + 10;
+      const y2 = y1 + Math.random() * 380 + 10;
+      const x3 = x1 + Math.random() * 380 + 10;
+      const y3 = y1 + Math.random() * 380 + 10;
       shape.setAttribute('points', `${x1},${y1} ${x2},${y2} ${x3},${y3}`);
       break;
   }
   shape.setAttribute('fill', `hsl(${Math.random() * 360}, 50%, 80%)`);
 
   // Set velocity and direction attributes
-  shape.setAttribute('velocity', Math.random() * 5 + 1);
+  shape.setAttribute('velocity', Math.random() * 3 + 1);
   shape.setAttribute('direction', Math.random() * 360);
 
   // Append the random shape to the SVG canvas and the shapes array
