@@ -2,8 +2,8 @@
 const svg = document.getElementById('svg');
 
 // Define an array of shape types
-const shapeTypes = ['circle', 'rect', 'polygon'];
-
+const shapeTypes = ['rect', 'ellipse', 'polygon', 'circle'];
+console.log(shapeTypes)
 // Create an array to store the shapes
 const shapes = [];
 
@@ -30,25 +30,73 @@ function createShape() {
       shape.setAttribute('width', Math.random() * 340 + 20);
       shape.setAttribute('height', Math.random() * 340 + 20);
       break;
+    case 'ellipse':
+      shape.setAttribute('cx', Math.random() * svg.clientWidth);
+      shape.setAttribute('cy', Math.random() * svg.clientHeight);
+      shape.setAttribute('rx', Math.random() * 250 + 10);
+      shape.setAttribute('ry', Math.random() * 150 + 10);
+      break;
     case 'polygon':
-      const x1 = Math.random() * svg.clientWidth;
-      const y1 = Math.random() * svg.clientHeight;
-      const x2 = x1 + Math.random() * 340 + 20;
-      const y2 = y1 + Math.random() * 340 + 20;
-      const x3 = x1 + Math.random() * 340 + 20;
-      const y3 = y1 + Math.random() * 340 + 20;
+      const x1 = 100;
+      const y1 = 100;
+      const x2 = 200;
+      const y2 = 200;
+      const x3 = 300;
+      const y3 = 100;
       shape.setAttribute('points', `${x1},${y1} ${x2},${y2} ${x3},${y3}`);
+      const initialX = Math.random() * svg.clientWidth;
+      const initialY = Math.random() * svg.clientHeight;
+      shape.setAttribute('transform', `translate(${initialX}, ${initialY})`);
+      console.log('triangle');
+      break;
+    default:
+      console.log('Invalid shape');
       break;
   }
-  shape.setAttribute('fill', `hsl(${Math.random() * 360}, 50%, 80%)`);
+
+  // Generate a random pastel color with more variation
+  const hue = Math.floor(Math.random() * 360); // random hue value (0-359)
+  const saturation = Math.floor(Math.random() * 30) + 70; // random saturation value (70-100)
+  const lightness = Math.floor(Math.random() * 30) + 50; // random lightness value (50-80)
+  const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
+
+  // set the color
+  shape.setAttribute('fill', pastelColor);
 
   // Set velocity and direction attributes
-  shape.setAttribute('velocity', Math.random() * 5 + 1);
+  shape.setAttribute('velocity', Math.random());
   shape.setAttribute('direction', Math.random() * 360);
+  const rotationAngle = Math.random() * 180;
+  //shape.setAttribute('transform', `rotate(${rotationAngle} ${shape.getAttribute('x')} ${shape.getAttribute('y')} )');
 
+  // Create a filter element for the drop shadow
+  const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+  filter.setAttribute('id', 'drop-shadow');
+
+  // Create a feDropShadow element to define the shadow effect
+  const dropShadow = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');
+  dropShadow.setAttribute('dx', 2);
+  dropShadow.setAttribute('dy', 2);
+  dropShadow.setAttribute('stdDeviation', 3);
+
+  // Append the feDropShadow element to the filter element
+  filter.appendChild(dropShadow);
+
+  // Append the filter element to the SVG element
+  svg.appendChild(filter);
+
+  // Set the filter attribute of the rect element to the ID of the filter element
+  shape.setAttribute('filter', 'url(#drop-shadow)');
   // Append the random shape to the SVG canvas and the shapes array
   svg.appendChild(shape);
   shapes.push(shape);
+}
+
+// Create 10 random shapes (3 of each type)
+for (let i = 0; i < 5; i++) {
+  createShape();
+
 }
 
 // Function to move the shapes
@@ -75,21 +123,12 @@ function moveShapes() {
     if (outOfBounds) {
       shape.setAttribute('direction', Math.random() * 360);
     } else {
-      if (shape.tagName === 'circle') {
-        shape.setAttribute('cx', newX);
-        shape.setAttribute('cy', newY);
-      } else {
-        shape.setAttribute('x', newX);
-        shape.setAttribute('y', newY);
-      }
+      shape.setAttribute('x', newX);
+      shape.setAttribute('y', newY);
     }
+
   });
 }
 
-// Create 10 random shapes
-for (let i = 0; i < 10; i++) {
-  createShape();
-}
-
 // Move the shapes every 50 milliseconds
-setInterval(moveShapes, 50);
+setInterval(moveShapes, 1);
