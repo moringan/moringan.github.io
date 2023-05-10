@@ -76,9 +76,9 @@ function createShape() {
 
   // Create a feDropShadow element to define the shadow effect
   const dropShadow = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');
-  dropShadow.setAttribute('dx', 2);
-  dropShadow.setAttribute('dy', 2);
-  dropShadow.setAttribute('stdDeviation', 3);
+  dropShadow.setAttribute('dx', 4);
+  dropShadow.setAttribute('dy', 4);
+  dropShadow.setAttribute('stdDeviation', 6);
 
   // Append the feDropShadow element to the filter element
   filter.appendChild(dropShadow);
