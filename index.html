@@ -18,21 +18,28 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      font-size: 24px;
+      font-family: 'KoolBeans-eerm', Arial, sans-serif;
+      font-size: 64px;
       color: white;
     }
     #overlay a {
       color: white;
       text-decoration: underline;
     }
+    @font-face {
+      font-family: 'KoolBeans-eerm';
+      src: url('KoolBeans-eerm.ttf') format('truetype');
+    }
   </style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
   <div id="overlay">
-    <div>Text goes here</div>
-    <a href="#">Link goes here</a>
+    <div>Mike's site!</div>
+    <a href="#">Programming</a>
+    <a href="#">Music</a>
+    <a href="#">Philosophy</a>
+    <a href="#">Art</a>
   </div>
   <script>
     const canvas = document.getElementById('canvas');

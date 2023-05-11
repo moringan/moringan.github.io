@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RotoZoomer</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+      const WIDTH = 800;
+      const HEIGHT = 600;
+      const TEXTURE_SIZE = 256;
+
+      let texture;
+      let outputImage;
+
+      function RotoZoomer() {
+        texture = new ImageData(TEXTURE_SIZE, TEXTURE_SIZE);
+        createTexture();
+        outputImage = new ImageData(WIDTH, HEIGHT);
+      }
+
+      function createTexture() {
+        let blockSize = 32;
+        for (let y = 0; y < TEXTURE_SIZE; y++) {
+          for (let x = 0; x < TEXTURE_SIZE; x++) {
+            let isWhite = ((x / blockSize) % 2 == 0) ^ ((y / blockSize) % 2 == 0);
+            let color = isWhite ? 255 : 0;
+            setPixel(texture, x, y, color, color, color, 255);
+          }
+        }
+      }
+
+      function drawRotoZoom(angle, scale) {
+        let cosAngle = Math.cos(angle) * scale;
+        let sinAngle = Math.sin(angle) * scale;
+        let startX = TEXTURE_SIZE / 2.0 - (WIDTH / 2) * cosAngle - (HEIGHT / 2) * sinAngle;
+        let startY = TEXTURE_SIZE / 2.0 + (WIDTH / 2) * sinAngle - (HEIGHT / 2) * cosAngle;
+
+        for (let y = 0; y < HEIGHT; y++) {
+          let textureX = startX;
+          let textureY = startY;
+          for (let x = 0; x < WIDTH; x++) {
+            let tx = Math.floor(textureX) & (TEXTURE_SIZE - 1);
+            let ty = Math.floor(textureY) & (TEXTURE_SIZE - 1);
+            let pixel = getPixel(texture, tx, ty);
+            setPixel(outputImage, x, y, pixel.r, pixel.g, pixel.b, pixel.a);
+            textureX += cosAngle;
+            textureY -= sinAngle;
+          }
+          startX += sinAngle;
+          startY += cosAngle;
+        }
+
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.putImageData(outputImage, 0, 0);
+      }
+
+      function setPixel(imageData, x, y, r, g, b, a) {
+        let index = (x + y * imageData.width) * 4;
+        imageData.data[index] = r;
+        imageData.data[index + 1] = g;
+        imageData.data[index + 2] = b;
+        imageData.data[index + 3] = a;
+      }
+
+      function getPixel(imageData, x, y) {
+        let index = (x + y * imageData.width) * 4;
+        let r = imageData.data[index];
+        let g = imageData.data[index + 1];
+        let b = imageData.data[index + 2];
+        let a = imageData.data[index + 3];
+        return { r, g, b, a };
+      }
+
+      function animate() {
+        let angle = Date.now() * 0.001;
+        let scale = 1.0 + 0.5 * Math.sin(Date.now() * 0.0005);
+        drawRotoZoom(angle, scale);
+        requestAnimationFrame(animate);
+      }
+
+      window.onload = function() {
+        let rotoZoomer = new RotoZoomer();
+        animate();
+      };
+    </script>
+  </body>
+</html>
