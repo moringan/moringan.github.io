@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Plasma Animation Example</title>
+  <title>Homepage</title>
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      overflow: hidden; /* Prevent scrollbars */
     }
-
     canvas {
       position: fixed;
       top: 0;
@@ -16,7 +17,6 @@
       left: 0;
       z-index: -1;
     }
-
     #overlay {
       position: absolute;
       top: 0;
@@ -28,29 +28,34 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: 'KoolBeans-eerm', Arial, sans-serif;
+      font-family: 'actionis', 'KEEPT___', Arial, sans-serif;
       font-size: 64px;
       color: white;
     }
-
     #overlay a {
       color: white;
       text-decoration: underline;
     }
-
+    #overlay h1 {
+      font-size: 96px;
+    }
     @font-face {
-      font-family: 'KoolBeans-eerm';
-      src: url('KoolBeans-eerm.ttf') format('truetype');
+      font-family: 'actionis';
+      src: url('actionis.ttf') format('truetype');
     }
   </style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
   <div id="overlay">
-    <div>Mike's site!</div>
+    <h1>Welcome to Mike's Place!</h1>
+
     <a href="#">Programming</a>
+
     <a href="#">Music</a>
+
     <a href="#">Philosophy</a>
+
     <a href="#">Art</a>
   </div>
   <script>
@@ -73,7 +78,7 @@
     function plasma(x, y, time) {
       const sinx = Math.sin(x / 64);
       const siny = Math.sin(y / 32);
-      const sinz = Math.sin(time / 40);
+      const sinz = Math.sin(time / 160);
       const color1 = Math.floor(3 + sinx + siny + sinz) % 4;
       const color2 = Math.floor(3 + sinx + siny + sinz + 1) % 4;
       const t = sinz - Math.floor(sinz);
@@ -91,7 +96,7 @@
       for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
           const index = (y * width + x) * 4;
-          const color = plasma(x * 0.25, y * 0.25, time * 0.25);
+          const color = plasma(x, y, time % 1600); // Wrap time value to 1600 to prevent skipping
           data[index] = color[0];
           data[index + 1] = color[1];
           data[index + 2] = color[2];
