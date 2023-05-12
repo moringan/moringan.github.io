@@ -3,10 +3,20 @@
 <head>
   <title>Plasma Animation Example</title>
   <style>
-    canvas {
-      height: 100%;
-      width: 100%;
+    html, body {
+      margin: 0;
+      padding: 0;
     }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+
     #overlay {
       position: absolute;
       top: 0;
@@ -22,10 +32,12 @@
       font-size: 64px;
       color: white;
     }
+
     #overlay a {
       color: white;
       text-decoration: underline;
     }
+
     @font-face {
       font-family: 'KoolBeans-eerm';
       src: url('KoolBeans-eerm.ttf') format('truetype');
@@ -45,6 +57,9 @@
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
     const width = canvas.width;
     const height = canvas.height;
 
@@ -56,8 +71,8 @@
     ];
 
     function plasma(x, y, time) {
-      const sinx = Math.sin(x / 16);
-      const siny = Math.sin(y / 8);
+      const sinx = Math.sin(x / 64);
+      const siny = Math.sin(y / 32);
       const sinz = Math.sin(time / 40);
       const color1 = Math.floor(3 + sinx + siny + sinz) % 4;
       const color2 = Math.floor(3 + sinx + siny + sinz + 1) % 4;
