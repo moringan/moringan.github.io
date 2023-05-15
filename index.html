@@ -1,113 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Homepage</title>
-
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden; /* Prevent scrollbars */
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-    }
-    #overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: 'actionis', 'KEEPT___', Arial, sans-serif;
-      font-size: 64px;
-      color: white;
-    }
-    #overlay a {
-      color: white;
-      text-decoration: underline;
-    }
-    #overlay h1 {
-      font-size: 96px;
-    }
-    @font-face {
-      font-family: 'actionis';
-      src: url('actionis.ttf') format('truetype');
-    }
-  </style>
-</head>
-<body>
-  <canvas id="canvas"></canvas>
-  <div id="overlay">
-    <h1>Welcome to Mike's Place!</h1>
-
-    <a href="#">Programming</a>
-
-    <a href="#">Music</a>
-
-    <a href="#">Philosophy</a>
-
-    <a href="#">Art</a>
-  </div>
-  <script>
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const width = canvas.width;
-    const height = canvas.height;
-
-    const palette = [
-      [245, 85, 54],
-      [255, 119, 61],
-      [241, 145, 67],
-      [255, 178, 56]
-    ];
-
-    function plasma(x, y, time) {
-      const sinx = Math.sin(x / 64);
-      const siny = Math.sin(y / 32);
-      const sinz = Math.sin(time / 160);
-      const color1 = Math.floor(3 + sinx + siny + sinz) % 4;
-      const color2 = Math.floor(3 + sinx + siny + sinz + 1) % 4;
-      const t = sinz - Math.floor(sinz);
-      const color = [
-        Math.round((1 - t) * palette[color1][0] + t * palette[color2][0]),
-        Math.round((1 - t) * palette[color1][1] + t * palette[color2][1]),
-        Math.round((1 - t) * palette[color1][2] + t * palette[color2][2])
-      ];
-      return color;
-    }
-
-    function render(time) {
-      const imageData = context.createImageData(width, height);
-      const data = imageData.data;
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          const index = (y * width + x) * 4;
-          const color = plasma(x, y, time % 1600); // Wrap time value to 1600 to prevent skipping
-          data[index] = color[0];
-          data[index + 1] = color[1];
-          data[index + 2] = color[2];
-          data[index + 3] = 255;
-        }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Particle System Demo</title>
+    <style>
+      body {
+        margin: 0;
       }
-      context.putImageData(imageData, 0, 0);
-      requestAnimationFrame(render.bind(null, time + 1));
-    }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      // Set up the scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
 
-    render(0);
-  </script>
-</body>
+      // Create particle geometry and material
+      const particleCount = 10000;
+      const particleGeometry = new THREE.BufferGeometry();
+      const particleMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.1,
+        transparent: true,
+        opacity: 0.7,
+        blending: THREE.AdditiveBlending,
+      });
+
+      // Create particle positions
+      const positions = new Float32Array(particleCount * 3);
+      for (let i = 0; i < particleCount * 3; i++) {
+        positions[i] = (Math.random() * 2 - 1) * 50;
+      }
+      particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+      // Add particles to the scene
+      const particles = new THREE.Points(particleGeometry, particleMaterial);
+      scene.add(particles);
+
+      // Set up the camera position and lookat
+      camera.position.z = 100;
+      camera.lookAt(scene.position);
+
+      // Animation loop
+      const animate = function () {
+        requestAnimationFrame(animate);
+
+        // Update particles
+        particles.rotation.x += 0.001;
+        particles.rotation.y += 0.001;
+
+        // Render the scene
+        renderer.render(scene, camera);
+      };
+
+      animate();
+    </script>
+  </body>
 </html>
