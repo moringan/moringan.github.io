@@ -3,17 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Particle System Demo</title>
+    <title>Mike's World</title>
     <style>
       body {
+        background-color:aliceblue;
         margin: 0;
       }
-      canvas {
-        display: block;
+      h1 {
+        color:darkred;
+        /* position: absolute;*/
       }
+      #special {
+        color:azure;
+      }
+      p {
+        color:chocolate;
+       
+      }
+      
+      /*canvas {
+        display: block;
+      }*/
     </style>
   </head>
   <body>
+    <header><h2>Mike's World</h2></header>
+    <main>
+      <h1>Cool Music I Found</h1>
+      <nav>
+        <ul>
+          <li>Liquor Store - In the Garden</li>
+          <li>Loosey - Winter '23 Promo</li>
+        </ul>
+      </nav>
+      
+    
+    
+    </main>
+    <footer><p>&copy; Copyright 2024 Mike Stapleton</p></footer>
+    
+  <!--
+    <p><iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3082889448/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="https://liquorstorenj.bandcamp.com/album/in-the-garden">In The Garden by Liquor Store</a></iframe></p>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
       // Set up the scene, camera, and renderer
@@ -24,13 +55,13 @@
       document.body.appendChild(renderer.domElement);
 
       // Create particle geometry and material
-      const particleCount = 10000;
+      const particleCount = 1000;
       const particleGeometry = new THREE.BufferGeometry();
       const particleMaterial = new THREE.PointsMaterial({
         color: 0xffffff,
-        size: 0.1,
+        size: 0.05,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.9,
         blending: THREE.AdditiveBlending,
       });
 
@@ -46,7 +77,7 @@
       scene.add(particles);
 
       // Set up the camera position and lookat
-      camera.position.z = 100;
+      camera.position.z = 50;
       camera.lookAt(scene.position);
 
       // Animation loop
@@ -63,5 +94,8 @@
 
       animate();
     </script>
+    -->  
+    
+    
   </body>
 </html>
