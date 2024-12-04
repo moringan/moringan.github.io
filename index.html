@@ -55,11 +55,19 @@
       document.body.appendChild(renderer.domElement);
 
       // Create particle geometry and material
+<<<<<<< HEAD
       const particleCount = 1000;
       const particleGeometry = new THREE.BufferGeometry();
       const particleMaterial = new THREE.PointsMaterial({
         color: 0xffffff,
         size: 0.05,
+=======
+      const particleCount = 100;
+      const particleGeometry = new THREE.BufferGeometry();
+      const particleMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.5,
+>>>>>>> d8b8bfa4173f78daafbbefbf92484bd78cbeb415
         transparent: true,
         opacity: 0.9,
         blending: THREE.AdditiveBlending,
