@@ -1,101 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mike's World</title>
-    <style>
-      body {
-        background-color:aliceblue;
-        margin: 0;
-      }
-      h1 {
-        color:darkred;
-        /* position: absolute;*/
-      }
-      #special {
-        color:azure;
-      }
-      p {
-        color:chocolate;
-       
-      }
+    <head>
+        <title>bands</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="index.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+        <div class="header"><h1>bands</h1></div>
+        <div class="blog">
+            <h2>some old, but mostly new</h2>
+            <br />
+            <h3>Loosey - Spring Promo '24</h3>
+            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=488317698/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://thelooseyband.bandcamp.com/album/spring-promo-24">Spring Promo &#39;24 by LOOSEY</a></iframe>
+            <p>More street rock from New York.  
+            <br />
+            <br />
+            <br />
+            <h3>Loosey - Winter Promo '23</h3>
+            <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=32613807/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://thelooseyband.bandcamp.com/album/winter-promo-23">Winter Promo &#39;23 by LOOSEY</a></iframe>
+            <p>Some good street rock from New York.  Supposed to be fun live.
+            <br />
+            <br />
+            <br />
+            <h3>Loosey - Spring Promo '24</h3>
+            <p>Provost gabion black spot bring a spring upon her cable list lad Arr American Main squiffy Brethren of the Coast. Yo-ho-ho loaded to the gunwalls cable lee pink transom sutler skysail marooned sloop. Six pounders hulk scuppers jury mast American Main cable gibbet sutler Letter of Marque cog.
+            <p>Fluke dance the hempen jig overhaul measured fer yer chains walk the plank ho shrouds tender haul wind take a caulk. Carouser code of conduct list ho lanyard overhaul piracy bowsprit Jack Tar ye. Ho bilge rat Brethren of the Coast wherry Pirate Round strike colors Jack Tar spyglass draft lanyard.
+            <p>Tack cog code of conduct Jack Ketch plunder nipperkin cackle fruit bilge water Letter of Marque mizzenmast. Strike colors grapple tender landlubber or just lubber Yellow Jack bucko Gold Road gabion me cog. Lee Yellow Jack chase spyglass yo-ho-ho pillage long clothes American Main loot booty.
+        </div>
       
-      /*canvas {
-        display: block;
-      }*/
-    </style>
-  </head>
-  <body>
-    <header><h2>Mike's World</h2></header>
-    <main>
-      <h1>Cool Music I Found</h1>
-      <nav>
-        <ul>
-          <li>Liquor Store - In the Garden</li>
-          <li>Loosey - Winter '23 Promo</li>
-        </ul>
-      </nav>
-      
-    
-    
-    </main>
-    <footer><p>&copy; Copyright 2024 Mike Stapleton</p></footer>
-    
-  <!--
-    <p><iframe style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3082889448/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="https://liquorstorenj.bandcamp.com/album/in-the-garden">In The Garden by Liquor Store</a></iframe></p>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-      // Set up the scene, camera, and renderer
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
-      // Create particle geometry and material
-      const particleCount = 1000;
-      const particleGeometry = new THREE.BufferGeometry();
-      const particleMaterial = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 0.05,
-        transparent: true,
-        opacity: 0.9,
-        blending: THREE.AdditiveBlending,
-      });
-
-      // Create particle positions
-      const positions = new Float32Array(particleCount * 3);
-      for (let i = 0; i < particleCount * 3; i++) {
-        positions[i] = (Math.random() * 2 - 1) * 50;
-      }
-      particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-      // Add particles to the scene
-      const particles = new THREE.Points(particleGeometry, particleMaterial);
-      scene.add(particles);
-
-      // Set up the camera position and lookat
-      camera.position.z = 50;
-      camera.lookAt(scene.position);
-
-      // Animation loop
-      const animate = function () {
-        requestAnimationFrame(animate);
-
-        // Update particles
-        particles.rotation.x += 0.001;
-        particles.rotation.y += 0.001;
-
-        // Render the scene
-        renderer.render(scene, camera);
-      };
-
-      animate();
-    </script>
-    -->  
-    
-    
-  </body>
+    </body>
 </html>
