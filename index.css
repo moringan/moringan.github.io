@@ -1,27 +1,36 @@
 :root {
   font-family: 'Courier New', Courier, monospace;
 }
+
+a {
+  font-size: 125%;
+}
+
 .container {
   display: flex;
-  flex-flow: row wrap; /* we'll wrap */
-  
+  flex-flow: column; /* Change to column layout on small screens */
 }
+
 .header, .blog, .sidebar, .footer {
   flex: 1 100%;
 }
+
 .header {
   background: #f0f080;
   text-align: center;
 }
+
 .sidebar {
   background: #80f0f0;
   padding: 10px;
 }
+
 .footer {
   background: #f080f0;
   padding: 10px;
   text-align: center;
 }
+
 .blog {
   background: #80f080;
   padding: 10px;
@@ -29,14 +38,26 @@
 
 /* medium screen */
 @media all and (min-width: 600px) {
-  /* if screen > 600px sidebar appears alongside blog getting 1/3rd of space */
-.blog { flex: 2 0px; }
-.sidebar { flex: 1 0px; }
+  .container {
+    flex-flow: row wrap; /* Revert to row layout for medium screens and above */
+  }
+
+  .blog {
+    flex: 2 0;
+  }
+
+  .sidebar {
+    flex: 1 0;
+  }
 }
 
 /* Large screens */
 @media all and (min-width: 800px) {
-/* On bigger screens, sidebar now only gets 1/4 of space */
-.blog { flex: 3 0px; }
-.sidebar { flex: 1 0px; }
+  .blog {
+    flex: 3 0;
+  }
+
+  .sidebar {
+    flex: 1 0;
+  }
 }
