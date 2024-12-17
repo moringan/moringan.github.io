@@ -1,0 +1,8 @@
+
+    <h3>Previous Entries</h3> <!-- test 2-->
+    <nav id="nav_list">
+    <ul>
+        <li><a href="november2024.html">November 2024</a></li>
+    </ul>
+    </nav>
+   
