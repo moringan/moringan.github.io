@@ -39,8 +39,17 @@ def insert_content(source_file, comment_marker, end_comment_marker, file_extensi
 
 # Specify the source file, comment marker, end comment marker, and file extension
 source_file = 'sidebar.txt'
-comment_marker = '<!-- INSERT_CONTENT_HERE -->'
-end_comment_marker = '<!-- END_OF_CONTENT -->'
+comment_marker = '<!-- BEGIN_SIDEBAR -->'
+end_comment_marker = '<!-- END_SIDEBAR -->'
+file_extension = '.html'
+
+# Call the function to update content in all text files with the specified extension
+insert_content(source_file, comment_marker, end_comment_marker, file_extension)
+
+# Specify the source file, comment marker, end comment marker, and file extension
+source_file = 'header.txt'
+comment_marker = '<!-- BEGIN_HEADER -->'
+end_comment_marker = '<!-- END_HEADER -->'
 file_extension = '.html'
 
 # Call the function to update content in all text files with the specified extension

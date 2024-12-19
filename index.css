@@ -6,12 +6,21 @@ a {
   font-size: 125%;
 }
 
+h3 { 
+  font-size: 135%;
+}
+
+p {
+  font-size: 125%;
+}
+
 .container {
   display: flex;
   flex-flow: column; /* Change to column layout on small screens */
 }
 
 .header, .blog, .sidebar, .footer {
+  font-size: 90%;
   flex: 1 100%;
 }
 
@@ -35,6 +44,14 @@ a {
   background: #80f080;
   padding: 10px;
 }
+
+.blog img {
+  /* width: 100%; /* Occupies 100% of the available space within the blog section */
+  width: auto;
+  max-width: 70%; /* Ensures the image or iframe does not exceed its intrinsic width */
+  
+}
+
 
 /* medium screen */
 @media all and (min-width: 600px) {
