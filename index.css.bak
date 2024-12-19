@@ -25,12 +25,12 @@ p {
 }
 
 .header {
-  background: #739efa;
+  background: #f0f080;
   text-align: center;
 }
 
 .sidebar {
-  background: #9e80f0;
+  background: #80f0f0;
   padding: 10px;
 }
 
@@ -41,7 +41,7 @@ p {
 }
 
 .blog {
-  background: #ecefff;
+  background: #80f080;
   padding: 10px;
 }
 
