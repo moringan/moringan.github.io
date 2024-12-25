@@ -29,6 +29,15 @@ p {
   text-align: center;
 }
 
+.header a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent (h1) */
+  font-size: 90%;
+}
+.header a:hover {
+  text-decoration: none; /* Remove underline on hover */
+}
+
 .sidebar {
   background: #9e80f0;
   padding: 10px;
