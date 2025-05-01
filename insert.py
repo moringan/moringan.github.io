@@ -4,7 +4,7 @@ import os
 
 def insert_content(source_file, comment_marker, end_comment_marker, file_extension):
     # Read the content from the source file
-    with open(source_file, 'r') as file:
+    with open(source_file, 'r',  errors='ignore') as file:
         source_content = file.read()
 
     # Get the list of files in the current directory
@@ -13,7 +13,7 @@ def insert_content(source_file, comment_marker, end_comment_marker, file_extensi
     # Filter out files with the specified file extension and insert content
     for file_name in files_in_directory:
         if file_name.endswith(file_extension):
-            with open(file_name, 'r') as file:
+            with open(file_name, 'r',  errors='ignore') as file:
                 file_content = file.readlines()
 
             # Find the line numbers where the comment markers are located
