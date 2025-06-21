@@ -4,4 +4,4 @@
     </a>
 </div>
 <div class="blog">
-    <h2>Check out these choice new slabs!</h2>
+    <h2>The world is still rocking and skating!</h2>
