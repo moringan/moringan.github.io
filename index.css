@@ -26,7 +26,7 @@ p {
 
 .header {
   
-  background: #7c7aff;
+  background: #ff7ae2;
   text-align: center;
 }
 
@@ -41,12 +41,12 @@ p {
 
 .sidebar {
   
-  background: #ff75aa;
+  background: #75d3ff;
   padding: 10px;
 }
 
 .footer {
-  background: #73c4fa;  
+  background: #83fa73;  
   padding: 10px;
   text-align: center;
 }
