@@ -1,7 +1,8 @@
 <div class="header">
+<meta name="referrer" content="strict-origin-when-cross-origin" />
     <a href ="https://moringan.github.io/index.html">
         <h1>What I've Been Listening To</h1>
     </a>
 </div>
 <div class="blog">
-    <h2>I'm back and I'm bad baby! :p</h2>
+    <h2>Skate. Rock. Rewind.</h2>
