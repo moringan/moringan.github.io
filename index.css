@@ -52,7 +52,7 @@ p {
 }
 
 .blog {
-  background: #f1f1ff;
+  background: hsl(240, 100%, 98%);
   padding: 10px;
 }
 
