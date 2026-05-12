@@ -25,23 +25,34 @@ p {
 }
 
 .header {
-  background: #f0f080;
+  
+  background: #ff7a8c;
   text-align: center;
 }
 
+.header a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent (h1) */
+  font-size: 90%;
+}
+.header a:hover {
+  text-decoration: none; /* Remove underline on hover */
+}
+
 .sidebar {
-  background: #80f0f0;
+  
+  background: #8a75ff;
   padding: 10px;
 }
 
 .footer {
-  background: #f080f0;
+  background: #fa7373;  
   padding: 10px;
   text-align: center;
 }
 
 .blog {
-  background: #80f080;
+  background: #fdfffb;
   padding: 10px;
 }
 
